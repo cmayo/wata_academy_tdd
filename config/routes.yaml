@@ -1,5 +1,10 @@
 controllers:
     resource:
         path: ../src/Infrastructure/Api/
-        namespace: App\Infrastructure\API
+        namespace: App\Infrastructure\Api
     type: attribute
+
+api_add_task:
+    path: /api/todos
+    controller: App\Infrastructure\Api\AddTaskController
+    methods: ['POST']
