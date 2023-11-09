@@ -34,5 +34,24 @@ class TaskMemoryRepositoryTest extends TestCase
         $this->assertEquals(2, $taskRepository->nextId());
     }
 
+    public function testGetAllTasks(): void
+    {
+        // Arrange
+        $expected = [
+            new Task(1, 'My new task'),
+            new Task(2, 'My new task'),
+        ];
+
+        $taskRepository = new TaskMemoryRepository();
+        $taskRepository->save($expected[0]);
+        $taskRepository->save($expected[1]);
+
+        // Act
+        $tasks = $taskRepository->getAll();
+
+        // Assert
+        $this->assertEquals($expected, $tasks);
+    }
+
 
 }

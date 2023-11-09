@@ -20,4 +20,11 @@ class TaskMemoryRepository implements TaskRepositoryInterface
 
         return $task;
     }
+
+    public function getAll(): array
+    {
+        return $this->tasks;
+    }
+
+
 }
