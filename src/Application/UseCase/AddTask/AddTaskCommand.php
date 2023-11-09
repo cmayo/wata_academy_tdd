@@ -10,4 +10,12 @@ class AddTaskCommand
     )
     {
     }
+
+    /**
+     * @return string
+     */
+    public function getTask(): string
+    {
+        return $this->task;
+    }
 }
