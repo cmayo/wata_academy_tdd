@@ -7,23 +7,23 @@ use App\Domain\Task\TaskRepositoryInterface;
 
 class TaskMemoryRepository implements TaskRepositoryInterface
 {
-    protected array $tasks = [];
+    protected static array $tasks = [];
 
     public function nextId(): int
     {
-        return count($this->tasks) + 1;
+        return count(self::$tasks) + 1;
     }
 
     public function save(Task $task): Task
     {
-        $this->tasks[] = $task;
+        self::$tasks[] = $task;
 
         return $task;
     }
 
     public function getAll(): array
     {
-        return $this->tasks;
+        return self::$tasks;
     }
 
 

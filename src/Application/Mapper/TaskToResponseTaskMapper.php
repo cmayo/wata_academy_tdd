@@ -2,10 +2,20 @@
 
 namespace App\Application\Mapper;
 
+use App\Application\Dto\ResponseTaskDto;
+use App\Domain\Task\Task;
+
 class TaskToResponseTaskMapper
 {
-    public function map()
+    /**
+     * @param array<Task> $tasks
+     * @return array<ResponseTaskDto>
+     */
+    public function map(array $tasks): array
     {
-        throw new \RuntimeException('Implement map() method.');
+        return array_map(
+            fn (Task $task) => new ResponseTaskDto($task->getName(), $task->isDone()),
+            $tasks
+        );
     }
 }

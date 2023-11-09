@@ -36,7 +36,7 @@ class TodoListAcceptanceTest extends WebTestCase
             [],
             ['content-type' => 'application/json'],
         );
-        $response = json_decode($client->getResponse(), true);
+        $response = json_decode($client->getResponse()->getContent(), true);
 
         $this->assertEquals($expected, $response);
     }
