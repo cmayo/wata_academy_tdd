@@ -2,11 +2,22 @@
 
 namespace App\Application\UseCase\GetTasks;
 
+use App\Application\Mapper\TaskToResponseTaskMapper;
+use App\Domain\Task\TaskRepositoryInterface;
+
 class GetTasksQueryHandler
 {
-    public function __invoke()
+    public function __construct(
+        protected TaskRepositoryInterface $taskRepository,
+        protected TaskToResponseTaskMapper $taskToResponseTaskMapper,
+    )
     {
-        throw new \RuntimeException('Implement __invoke() method.');
+    }
+
+    public function __invoke(GetTasksQuery $getTasksQuery): array
+    {
+        $tasks = $this->taskRepository->getAll();
+        return $this->taskToResponseTaskMapper->map($tasks);
     }
 
 }
